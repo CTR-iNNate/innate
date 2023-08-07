@@ -16,9 +16,7 @@ public class SignUpService {
     private final ManagerRepository managerRepository;
     private final CustomerRepository customerRepository;
 
-    /**
-     * 점장 - 회원가입
-     */
+  
     public String managerSignUp(SignUpForm form) {
         if (isEmailExistManager(form.getEmail())) {
             throw new CustomerEx(ErrorCode.ALREADY_REGISTERED_USER);
@@ -29,7 +27,7 @@ public class SignUpService {
         return "회원가입이 완료되었습니다.";
     }
 
-    // 이메일 중복여부 확인
+  
     private boolean isEmailExistManager(String email) {
         return managerRepository.findByEmail(email).isPresent();
     }
